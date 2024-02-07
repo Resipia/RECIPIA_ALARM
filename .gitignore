@@ -1,0 +1,71 @@
+# IntelliJ IDEA 관련 설정
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# 빌드 생성물
+/build/
+/out/
+
+# Gradle 관련 파일
+.gradle/
+build/
+
+# Maven 관련 파일
+target/
+
+# STS
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans/
+
+# Eclipse
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders/
+
+# OS 관련 파일
+.DS_Store
+Thumbs.db
+
+# 로그 파일
+*.log
+
+# Java 런타임 파일
+hs_err_pid*
+
+# Kotlin
+*.kts
+.kts.md5
+.kts.jar
+
+# 임시 파일
+*.tmp
+*.bak
+*.swp
+
+# 기타 개발 도구
+*.launch
+.actionScriptProperties
+.flexProperties
+.externalToolBuilders
+*.lnk
+
+# 가상 환경
+.venv/
+virtualenv/
+
+# PKS
+*.lock
