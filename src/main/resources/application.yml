@@ -1,0 +1,20 @@
+cloud:
+  aws:
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY}
+      secretKey: ${AWS_SECRET_KEY}
+    region:
+      static: ${REGION}
+    stack:
+      auto: false
+    endpoint:
+      enable: false
+
+spring:
+  aws:
+  cloud:
+      messaging:
+        listener:
+          visibility-timeout: 30 # ??? ??? ??? ?? (?)
+          wait-time-out: 20 # Long Polling ?? ?? (?)
+        enabled: true
