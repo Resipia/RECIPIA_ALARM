@@ -1,0 +1,27 @@
+cloud:
+  aws:
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY}
+      secretKey: ${AWS_SECRET_KEY}
+    region:
+      static: ${REGION}
+    stack:
+      auto: false
+    endpoint:
+      enable: false
+    sqs:
+      member-follow-sqs: "member-follow-sqs"
+      member-signup-sqs: "signup-sqs"
+      dev-sns-test: "dev-sns-test"
+
+spring:
+  aws:
+  cloud:
+    messaging:
+      listener:
+        visibility-timeout: 30
+        wait-time-out: 20
+      enabled: true
+
+feign:
+  member_url: http://127.0.0.1:8081
