@@ -22,3 +22,6 @@ spring:
           visibility-timeout: 30 # ??? ??? ??? ?? (?)
           wait-time-out: 20 # Long Polling ?? ?? (?)
         enabled: true
+
+feign:
+  member_url: http://127.0.0.1:8081
