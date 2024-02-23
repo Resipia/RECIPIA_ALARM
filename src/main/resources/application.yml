@@ -19,8 +19,8 @@ spring:
   cloud:
       messaging:
         listener:
-          visibility-timeout: 30 # ??? ??? ??? ?? (?)
-          wait-time-out: 20 # Long Polling ?? ?? (?)
+          visibility-timeout: 30
+          wait-time-out: 20
         enabled: true
 
 feign:
