@@ -16,14 +16,7 @@ class AwsSqsListener (
     private val eventPublisher: ApplicationEventPublisher
 ) {
 
-    @Value("\${cloud.aws.sqs.member-follow-sqs}")
-    private lateinit var memberFollowQueue: String
-
-    @Value("\${cloud.aws.sqs.member-signup-sqs}")
-    private lateinit var memberSignupQueue: String
-
-
-//    @SqsListener("#{sqsListener.memberFollowQueue}")
+    @SqsListener("\${cloud.aws.sqs.member-follow-sqs}")
     fun receiveMemberFollowMessage(message: String) {
         // Jackson ObjectMapper로 JSON 메시지 파싱
         val objectMapper = jacksonObjectMapper()
@@ -35,7 +28,7 @@ class AwsSqsListener (
         println("Received message with Trace ID: $traceId and Event: $memberFollowEvent")
     }
 
-    @SqsListener("#{AwsSqsListener.memberSignupQueue}")
+    @SqsListener("\${cloud.aws.sqs.member-signup-sqs}")
     fun receiveMemberSignupMessage(message: String) {
         // Jackson ObjectMapper로 JSON 메시지 파싱
         val objectMapper = jacksonObjectMapper()

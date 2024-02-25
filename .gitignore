@@ -69,3 +69,6 @@ virtualenv/
 
 # PKS
 *.lock
+
+# Local development configuration
+application-dev.yml
