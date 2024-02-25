@@ -24,3 +24,13 @@ spring:
 
 feign:
   member_url: ${MEMBER_URL}
+
+
+logging:
+  level:
+    root: info
+    feign.Logger: debug
+    org:
+      recipia:
+        alarm:
+          feign: debug
