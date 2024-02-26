@@ -39,9 +39,6 @@ class AwsSqsListener (
         // 회원가입 이벤트 발행
         val memberSignupEvent = MemberSignupSpringEvent(memberIdDto.memberId)
         eventPublisher.publishEvent(memberSignupEvent)
-
-//        println("Received message with Trace ID: $traceId and Event: $memberIdDto.memberId")
-
     }
 
 }
