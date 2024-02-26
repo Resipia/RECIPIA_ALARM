@@ -22,7 +22,7 @@ class RequestFeignClient (
 
         val nicknameDto: NicknameDto = memberFeignClient.getNickname(memberId)
 
-        // Feign 요청으로 받은 dto가 존재하면 Nickname 엔티티에서 유저 닉네임 변경
+        // 추후 nicknameDto로 필요한 프로세스 진행
         nicknameDto.let {
             println(nicknameDto.memberId)
             println(nicknameDto.nickname)
