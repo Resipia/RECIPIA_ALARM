@@ -1,15 +1,20 @@
 package org.recipia.alarm.listener.spring
 
 import jakarta.transaction.Transactional
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.recipia.alarm.common.springevent.MemberSignupSpringEvent
 import org.recipia.alarm.dto.NicknameDto
 import org.recipia.alarm.feign.MemberFeignClient
+import org.recipia.alarm.service.DynamoDBService
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 
 @Component
 class RequestFeignClient (
-    val memberFeignClient: MemberFeignClient
+    val memberFeignClient: MemberFeignClient,
+    val dynamoDBService: DynamoDBService
+
 ) {
 
     /**
@@ -17,16 +22,15 @@ class RequestFeignClient (
      */
     @Transactional
     @EventListener
-    fun requestSignUpMemberNickname(event: MemberSignupSpringEvent) : String {
+    fun requestSignUpMemberNickname(event: MemberSignupSpringEvent)  {
         val memberId = event.memberId
 
         val nicknameDto: NicknameDto = memberFeignClient.getNickname(memberId)
 
-        // 추후 nicknameDto로 필요한 프로세스 진행
-        nicknameDto.let {
-            println(nicknameDto.memberId)
-            println(nicknameDto.nickname)
+        // DynamoDBService를 사용하여 DynamoDB에 데이터 추가
+        GlobalScope.launch {
+            dynamoDBService.addNicknameToDB(nicknameDto.memberId, nicknameDto.nickname)
         }
-        return nicknameDto.nickname
+
     }
 }

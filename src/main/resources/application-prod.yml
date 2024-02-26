@@ -11,7 +11,8 @@ cloud:
       enable: false
     sqs:
       member-follow-sqs: member-follow-sqs
-      member-signup-sqs: signup-sqs
+      member-signup-sqs: alarm-signup-sqs
+      nickname-change-sqs: alarm-nickname-change-sqs
 
 spring:
   aws:

@@ -3,11 +3,11 @@ package org.recipia.alarm.listener.aws
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import io.awspring.cloud.sqs.annotation.SqsListener
+import org.recipia.alarm.common.springevent.MemberSignupSpringEvent
 import org.recipia.alarm.dto.SnsNotificationDto
 import org.recipia.alarm.dto.message.MemberFollowEvent
 import org.recipia.alarm.dto.message.MemberIdDto
-import org.recipia.alarm.common.springevent.MemberSignupSpringEvent
-import org.springframework.beans.factory.annotation.Value
+import org.recipia.alarm.logger
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Component
 
@@ -16,7 +16,9 @@ class AwsSqsListener (
     private val eventPublisher: ApplicationEventPublisher
 ) {
 
-    @SqsListener("\${cloud.aws.sqs.member-follow-sqs}")
+    val log = logger()
+
+//    @SqsListener("\${cloud.aws.sqs.member-follow-sqs}")
     fun receiveMemberFollowMessage(message: String) {
         // Jackson ObjectMapper로 JSON 메시지 파싱
         val objectMapper = jacksonObjectMapper()
@@ -25,7 +27,7 @@ class AwsSqsListener (
         val traceId = snsNotification.MessageAttributes.traceId.Value
 
         // 여기서 memberFollowEvent와 traceId를 사용하여 필요한 로직 처리
-        println("Received message with Trace ID: $traceId and Event: $memberFollowEvent")
+        log.info("Received message with Trace ID: $traceId and Event: $memberFollowEvent")
     }
 
     @SqsListener("\${cloud.aws.sqs.member-signup-sqs}")
