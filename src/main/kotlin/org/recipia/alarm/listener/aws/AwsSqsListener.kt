@@ -18,7 +18,7 @@ class AwsSqsListener (
 
     val log = logger()
 
-    @SqsListener("\${cloud.aws.sqs.member-follow-sqs}")
+//    @SqsListener("\${cloud.aws.sqs.member-follow-sqs}")
     fun receiveMemberFollowMessage(message: String) {
         // Jackson ObjectMapper로 JSON 메시지 파싱
         val objectMapper = jacksonObjectMapper()
