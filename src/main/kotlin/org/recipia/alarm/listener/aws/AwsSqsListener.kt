@@ -3,11 +3,11 @@ package org.recipia.alarm.listener.aws
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import io.awspring.cloud.sqs.annotation.SqsListener
-import org.recipia.alarm.common.springevent.MemberSignupSpringEvent
 import org.recipia.alarm.dto.SnsNotificationDto
 import org.recipia.alarm.dto.message.MemberFollowEvent
 import org.recipia.alarm.dto.message.MemberIdDto
 import org.recipia.alarm.logger
+import org.recipia.alarm.springevent.MemberSignupSpringEvent
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Component
 
