@@ -8,7 +8,7 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
-import org.recipia.alarm.common.springevent.MemberSignupSpringEvent
+import org.recipia.alarm.springevent.MemberSignupSpringEvent
 import org.recipia.alarm.dto.NicknameDto
 import org.recipia.alarm.feign.MemberFeignClient
 

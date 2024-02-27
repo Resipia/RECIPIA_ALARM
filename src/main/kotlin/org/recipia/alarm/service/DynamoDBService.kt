@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class DynamoDBService (
-        val dynamoDbClient: DynamoDbClient
+        private val dynamoDbClient: DynamoDbClient
 ) {
 
     val log = logger()
@@ -32,13 +32,12 @@ class DynamoDBService (
             log.info("닉네임 정보 DynamoDB에 추가 성공: $memberId, $nickname")
         } catch (e: Exception) {
             log.warn("DynamoDB에 닉네임 정보 추가 실패: ${e.message}")
-            if (retryCount < 1) { // 재시도 횟수가 1번 미만일 경우 재시도
-                log.warn("닉네임 정보 DynamoDB에 저장 재시도 중...")
+            if (retryCount < 2) { // 최초 시도 후 실패하면 2번 더 재시도하도록 수정
+                log.warn("닉네임 정보 DynamoDB에 저장 재시도 중... (재시도 횟수: ${retryCount + 1})")
                 addNicknameToDB(memberId, nickname, retryCount + 1)
             } else {
                 log.error("닉네임 정보 DynamoDB에 저장 최종 실패: $memberId, $nickname")
             }
         }
     }
-
 }

@@ -1,4 +1,4 @@
-package org.recipia.alarm.common.springevent
+package org.recipia.alarm.springevent
 
 data class MemberSignupSpringEvent(
     var memberId: Long
