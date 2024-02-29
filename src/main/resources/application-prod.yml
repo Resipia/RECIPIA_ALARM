@@ -9,6 +9,10 @@ cloud:
       auto: false
     endpoint:
       enable: false
+    sqs:
+      member-follow-sqs: member-follow-sqs
+      member-signup-sqs: alarm-signup-sqs
+      nickname-change-sqs: alarm-nickname-change-sqs
 
 spring:
   aws:
@@ -20,4 +24,14 @@ spring:
         enabled: true
 
 feign:
-  member_url: http://127.0.0.1:8081
+  member_url: ${MEMBER_URL}
+
+
+logging:
+  level:
+    root: info
+    feign.Logger: debug
+    org:
+      recipia:
+        alarm:
+          feign: debug

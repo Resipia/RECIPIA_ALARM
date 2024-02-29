@@ -9,15 +9,19 @@ cloud:
       auto: false
     endpoint:
       enable: false
+    sqs:
+      member-follow-sqs: "member-follow-sqs"
+      member-signup-sqs: "signup-sqs"
+      dev-sns-test: "dev-sns-test"
 
 spring:
   aws:
   cloud:
-      messaging:
-        listener:
-          visibility-timeout: 30
-          wait-time-out: 20
-        enabled: true
+    messaging:
+      listener:
+        visibility-timeout: 30
+        wait-time-out: 20
+      enabled: true
 
 feign:
   member_url: http://127.0.0.1:8081
