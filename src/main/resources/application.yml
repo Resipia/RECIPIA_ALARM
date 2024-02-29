@@ -21,3 +21,7 @@ spring:
 
 feign:
   member_url: http://127.0.0.1:8081
+
+dynamodb:
+  table:
+    nickname: member_nickname
