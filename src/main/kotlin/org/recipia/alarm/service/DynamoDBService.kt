@@ -6,6 +6,9 @@ import aws.sdk.kotlin.services.dynamodb.model.PutItemRequest
 import org.recipia.alarm.logger
 import org.springframework.stereotype.Service
 
+/**
+ * AWS DynamoDB와 연동하는 서비스 클래스
+ */
 @Service
 class DynamoDBService (
         private val dynamoDbClient: DynamoDbClient

@@ -8,6 +8,9 @@ import org.springframework.context.ApplicationEventPublisher
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 
+/**
+ * feign 요청을 담당하는 스프링 이벤트 리스너
+ */
 @Component
 class RequestFeignClient (
         private val memberFeignClient: MemberFeignClient,
