@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
 
+/**
+ * member 서버에 feign 요청을 담당하는 클라이언트 클래스
+ */
 @FeignClient(name = "member-service", url = "\${feign.member_url}", configuration = [LoggingConfig::class])
 interface MemberFeignClient {
 

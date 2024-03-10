@@ -4,17 +4,22 @@ import aws.sdk.kotlin.services.dynamodb.DynamoDbClient
 import aws.sdk.kotlin.services.dynamodb.model.AttributeValue
 import aws.sdk.kotlin.services.dynamodb.model.PutItemRequest
 import org.recipia.alarm.logger
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 
+/**
+ * AWS DynamoDB와 연동하는 서비스 클래스
+ */
 @Service
 class DynamoDBService (
-        private val dynamoDbClient: DynamoDbClient
+        private val dynamoDbClient: DynamoDbClient,
+        @Value("\${dynamodb.table.nickname}") private val nicknameTableName: String
 ) {
 
     val log = logger()
 
     /**
-     * DynamoDB에 닉네임 정보를 추가하는 메소드
+     * member_nickname 테이블에 memberId, nickname을 저장하는 메서드
      */
     suspend fun addNicknameToDB(memberId: Long, nickname: String, retryCount: Int = 0) {
         val itemValues = mapOf(
@@ -23,7 +28,7 @@ class DynamoDBService (
         )
 
         val putItemRequest = PutItemRequest {
-            tableName = "member_nickname"
+            tableName = nicknameTableName
             item = itemValues
         }
 

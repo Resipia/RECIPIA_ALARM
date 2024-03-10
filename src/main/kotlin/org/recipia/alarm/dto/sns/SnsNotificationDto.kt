@@ -1,5 +1,9 @@
-package org.recipia.alarm.dto
+package org.recipia.alarm.dto.sns
 
+
+/**
+ * SNS 메시지 객체를 담을 DTO 객체
+ */
 data class SnsNotificationDto (
         val Type: String,
         val MessageId: String,

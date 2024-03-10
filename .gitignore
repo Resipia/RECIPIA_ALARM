@@ -47,7 +47,6 @@ Thumbs.db
 hs_err_pid*
 
 # Kotlin
-*.kts
 .kts.md5
 .kts.jar
 

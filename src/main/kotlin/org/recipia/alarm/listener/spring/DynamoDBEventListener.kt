@@ -8,6 +8,9 @@ import org.recipia.alarm.springevent.FeignNicknameSpringEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 
+/**
+ * DynamoDB 관련 스프링 이벤트 담당 리스너
+ */
 @Component
 class DynamoDBEventListener (
         private val dynamoDBService: DynamoDBService
