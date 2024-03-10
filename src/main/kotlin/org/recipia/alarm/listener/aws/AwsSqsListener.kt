@@ -3,7 +3,7 @@ package org.recipia.alarm.listener.aws
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import io.awspring.cloud.sqs.annotation.SqsListener
-import org.recipia.alarm.dto.message.MemberFollowEvent
+import org.recipia.alarm.dto.message.MemberFollowMessage
 import org.recipia.alarm.dto.message.MemberIdDto
 import org.recipia.alarm.dto.sns.SnsNotificationDto
 import org.recipia.alarm.logger
@@ -47,13 +47,13 @@ class AwsSqsListener (
         // Jackson ObjectMapper로 JSON 메시지 파싱
         val objectMapper = jacksonObjectMapper()
         val snsNotification: SnsNotificationDto = objectMapper.readValue(message)
-        val memberFollowEvent: MemberFollowEvent = objectMapper.readValue(snsNotification.Message)
+        val memberFollowMessage: MemberFollowMessage = objectMapper.readValue(snsNotification.Message)
 
         // todo: 아래 traceId로 새로운 trace 생성 후 span 추가
         val traceId = snsNotification.MessageAttributes.traceId.Value
 
         // 여기서 memberFollowEvent와 traceId를 사용하여 필요한 로직 처리
-        log.info("Received message with Trace ID: $traceId and Event: $memberFollowEvent")
+        log.info("Received message with Trace ID: $traceId and Event: $memberFollowMessage")
     }
 
 
